@@ -1,15 +1,36 @@
 {
   "name": "puppeteer-extra-plugin-auto-scroll",
+  "description": "A auto scroll plugin for puppeteer-extra",
   "version": "0.1.0",
   "main": "src/index.js",
-  "author": "André Lins",
+  "module": "src/index.js",
+  "repository": "https://github.com/andrelmlins/puppeteer-extra-plugin-auto-scroll",
+  "author": "André Lins <andrelucas01@hotmail.com> (https://andrelmlins.github.io/)",
+  "homepage": "https://github.com/andrelmlins/puppeteer-extra-plugin-auto-scroll",
   "license": "MIT",
   "private": false,
+  "files": [
+    "src"
+  ],
+  "bugs": {
+    "url": "https://github.com/andrelmlins/choose-port/issues"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
   "devDependencies": {
     "puppeteer": "^2.1.1",
     "puppeteer-extra": "^3.1.9"
   },
   "dependencies": {
     "puppeteer-extra-plugin": "^3.1.4"
-  }
+  },
+  "keywords": [
+    "puppeteer",
+    "puppeteer-extra",
+    "puppeteer-extra-plugin",
+    "scroll",
+    "auto-scroll",
+    "infinite-scroll"
+  ]
 }
