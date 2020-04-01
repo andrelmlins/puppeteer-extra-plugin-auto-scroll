@@ -1,4 +1,4 @@
-const { PuppeteerExtraPlugin } = require("puppeteer-extra-plugin");
+const { PuppeteerExtraPlugin } = require('puppeteer-extra-plugin');
 
 class AutoScrollPlugin extends PuppeteerExtraPlugin {
   constructor(config = {}) {
@@ -6,7 +6,7 @@ class AutoScrollPlugin extends PuppeteerExtraPlugin {
   }
 
   get name() {
-    return "auto-scroll";
+    return 'auto-scroll';
   }
 
   async autoScroll() {
