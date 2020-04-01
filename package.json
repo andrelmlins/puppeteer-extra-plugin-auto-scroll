@@ -1,5 +1,5 @@
 {
-  "name": "puppeteer-auto-scroll",
+  "name": "puppeteer-extra-plugin-auto-scroll",
   "version": "0.1.0",
   "main": "index.js",
   "author": "André Lins",
