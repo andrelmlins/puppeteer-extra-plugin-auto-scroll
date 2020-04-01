@@ -9,16 +9,30 @@ class AutoScrollPlugin extends PuppeteerExtraPlugin {
     return 'auto-scroll';
   }
 
-  async autoScroll() {
-    await this.evaluate(runAutoScroll());
+  /**
+   * Generate auto scroll
+   * @param  {?String} id Initial port
+   * @param  {!Number} distance Scroll distance
+   * @param  {!Number} interval Interval to scroll
+   */
+  async autoScroll(id, distance = 100, interval = 1000) {
+    await this.evaluate(
+      await runAutoScroll(id, distance || 100, interval || 1000)
+    );
   }
 
-  async runAutoScroll() {
+  /**
+   * Run auto scroll
+   * @param  {?String} id Initial port
+   * @param  {!Number} distance Scroll distance
+   * @param  {!Number} interval Interval to scroll
+   */
+  async runAutoScroll(id, distance, interval) {
     await new Promise(resolve => {
       let totalHeight = 0;
-      let distance = 100;
       let timer = setInterval(() => {
-        let scrollHeight = document.body.scrollHeight;
+        const document = id ? document.getElementById(id) : document.body;
+        let scrollHeight = document.scrollHeight;
         window.scrollBy(0, distance);
         totalHeight += distance;
 
@@ -26,7 +40,7 @@ class AutoScrollPlugin extends PuppeteerExtraPlugin {
           clearInterval(timer);
           resolve();
         }
-      }, 1000);
+      }, interval);
     });
   }
 

@@ -40,6 +40,22 @@ async function getPage(url) {
 }
 ```
 
+## Params
+
+Parameters of the `autoScroll` function in order:
+
+### `id`
+
+Type `?String` Required: `false`
+
+### `distance`
+
+Type `!Number` Default: `100` Required: `false`
+
+### `timeout`
+
+Type `!String|Function` Default: `1000` Required: `false`
+
 ## NPM Statistics
 
 Download stats for this NPM package
