@@ -17,7 +17,7 @@ class AutoScrollPlugin extends PuppeteerExtraPlugin {
    */
   async autoScroll(id, distance = 100, interval = 1000) {
     await this.evaluate(
-      await runAutoScroll(id, distance || 100, interval || 1000)
+      await this.runAutoScroll(id, distance || 100, interval || 1000)
     );
   }
 
