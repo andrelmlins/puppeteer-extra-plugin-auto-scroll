@@ -10,38 +10,34 @@ class AutoScrollPlugin extends PuppeteerExtraPlugin {
   }
 
   /**
-   * Generate auto scroll
-   * @param  {?String} id Initial port
-   * @param  {!Number} distance Scroll distance
-   * @param  {!Number} interval Interval to scroll
-   */
-  async autoScroll(id, distance = 100, interval = 1000) {
-    await this.evaluate(
-      await this.runAutoScroll(id, distance || 100, interval || 1000)
-    );
-  }
-
-  /**
    * Run auto scroll
-   * @param  {?String} id Initial port
-   * @param  {!Number} distance Scroll distance
-   * @param  {!Number} interval Interval to scroll
+   * @param  {String} selector Initial port
+   * @param  {Number} distance Scroll distance
+   * @param  {Number} interval Interval to scroll
    */
-  async runAutoScroll(id, distance, interval) {
-    await new Promise(resolve => {
-      let totalHeight = 0;
-      let timer = setInterval(() => {
-        const document = id ? document.getElementById(id) : document.body;
-        let scrollHeight = document.scrollHeight;
-        window.scrollBy(0, distance);
-        totalHeight += distance;
+  async autoScroll(selector = 'body', distance = 100, interval = 1000) {
+    selector = selector || 'body';
+    distance = distance || 100;
+    interval = interval || 1000;
 
-        if (totalHeight >= scrollHeight) {
-          clearInterval(timer);
-          resolve();
-        }
-      }, interval);
-    });
+    const document = await this.$(selector);
+
+    const runAutoScroll = (distance, interval, document) =>
+      new Promise(resolve => {
+        let totalHeight = 0;
+        let timer = setInterval(() => {
+          let scrollHeight = document.scrollHeight;
+          window.scrollBy(0, distance);
+          totalHeight += distance;
+
+          if (totalHeight >= scrollHeight) {
+            clearInterval(timer);
+            resolve();
+          }
+        }, interval);
+      });
+
+    await this.evaluate(runAutoScroll, distance, interval, document);
   }
 
   async onPageCreated(page) {

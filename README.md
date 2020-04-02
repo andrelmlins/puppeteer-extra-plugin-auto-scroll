@@ -44,17 +44,17 @@ async function getPage(url) {
 
 Parameters of the `autoScroll` function in order:
 
-### `id`
+### `selector`
 
-Type `?String` Required: `false`
+Type `String` Default: `body` Required: `false`
 
 ### `distance`
 
-Type `!Number` Default: `100` Required: `false`
+Type `Number` Default: `100` Required: `false`
 
 ### `timeout`
 
-Type `!String|Function` Default: `1000` Required: `false`
+Type `String` Default: `1000` Required: `false`
 
 ## NPM Statistics
 
